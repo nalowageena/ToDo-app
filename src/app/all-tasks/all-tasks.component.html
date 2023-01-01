@@ -1,10 +1,11 @@
+<div class="d-flex">
 
  <!-- sidebar -->
- <aside>
+ <aside class="bg-light p-5 w-8">
     <label for="completion">Completion</label>
       <fieldset id="completion">
         <input type="radio" value="done" name="completion"> Done <br>
-        <input type="radio" value="undone" name="completion"> Not done <br>
+        <input type="radio" value="undone" name="completion"> Undone <br>
         <input type="radio" value="all" name="completion"> All <br>
       </fieldset>
     <label for="priority">Priority</label>
@@ -21,7 +22,10 @@
   </aside>
   
   <main>
-   <input type="search" name="search" id="search" placeholder="search task">
+    <div>
+        <button><i class="fa-solid fa-search"></i></button>
+        <input type="search" name="search" id="search" placeholder="search task">
+       </div>
    <h2>All Tasks</h2>
   <div class="task">
     <p class="title">The first</p>
@@ -30,3 +34,4 @@
     <button>delete</button>
   </div>
   </main>
+</div>
