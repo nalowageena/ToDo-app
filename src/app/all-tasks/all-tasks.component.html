@@ -33,5 +33,20 @@
     <button routerLink = "/task">more</button>
     <button>delete</button>
   </div>
+
+<ul class="tasks">
+  <li *ngFor="let task of tasks">
+    <button type="button" (click)="onSelect(task)">
+      <span class="badge">{{task.taskId}}</span>
+      <span class="name">{{task.title}}</span>
+      <span class="name">{{task.priority}}</span>
+    </button>
+  </li>
+  <div *ngIf="selectedTask">
+    <h2>{{selectedTask.title | uppercase}} Details</h2>
+    <div>: {{selectedTask.priority}}</div>
+    <div>: {{selectedTask.description}}</div>
+  </div>
+</ul>
   </main>
 </div>

@@ -1,19 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-
-interface Task {
-  taskId: number;
-  title: string | null;
-  description: string | null | undefined;
-  priority: string | null | undefined;
-  // deadline: Date;
-  attachLink: {
-    link: string,
-    shortLink: string
-  }
-  imageUrl: string|null|undefined;
-}
+import { Task } from "../task";
 
 @Component({
   selector: 'app-task-page',
