@@ -1,17 +1,17 @@
 <main>
-    <button routerLink = "/all-tasks">Back</button>
-    <form action="">
-        <input type="text" name="title" id="title" value="The first">
-        <input type="text" id="description" value="the first ever task on this app">
-        <select name="priority" id="priority">
-           <option value="low">Low</option>
-           <option value="medium">Medium</option> 
-           <option value="high">High</option>
+    <button routerLink="/all-tasks">Back</button>
+
+    <form [formGroup]="taskForm" (ngSubmit)="onClickSave()">
+        <input type="text" name="title" id="title" value="The first" formControlName="title" required/>
+        <input type="text" id="description" value="the first ever task on this app" formControlName="description" />
+        <select name="priority" id="priority" formControlName="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
         </select>
-        <label for="deadline">Deadline</label>
-        <input type="datetime-local" name="deadline" id="deadline">
-        <button type="button">Add link</button>
-        <button type="button">Attach image</button>
-        <button type="submit">Save</button>
+        <!-- <label for="deadline">Deadline</label>
+        <input type="datetime-local" name="deadline" id="deadline" formControlName="deadline"> -->
+
+        <button type="submit" [disabled]="taskForm.invalid">Save</button>
     </form>
 </main>
