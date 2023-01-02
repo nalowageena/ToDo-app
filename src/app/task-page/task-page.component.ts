@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Task } from "../task";
+import { TaskService } from "../task.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-task-page',
@@ -23,7 +25,7 @@ export class TaskPageComponent implements OnInit {
   taskId: number = 1;
   imageUrl: string = '';
 
-  constructor() {}
+  constructor(private taskService:TaskService, private router:Router) {}
 
   ngOnInit(): void {}
 
@@ -42,7 +44,6 @@ export class TaskPageComponent implements OnInit {
   
   onClickSave() {
     let task: Task = {
-      taskId: this.taskId,
       title: this.taskForm.getRawValue().title,
       description: this.taskForm.value.description,
       priority: this.taskForm.value.priority,
@@ -53,8 +54,11 @@ export class TaskPageComponent implements OnInit {
         shortLink: this.taskForm.value.shortLink,
       }
     };
-    console.log(task);
-    this.tasks.push(task);
-    console.log(this.tasks);
+    this.saveTask(task);
+    this.router.navigate(['/all-tasks'])
+  }
+
+  saveTask(task:Task){
+    this.taskService.addTask(task);
   }
 }

@@ -26,4 +26,11 @@ export class AllTasksComponent implements OnInit {
     this.selectedTask = task;
   }
 
+  deleteTask(task):void{
+    this.taskService.deleteTask(task);
+  }
+
+  viewDetails(task):void{
+    this.taskService.deleteTask(task);
+  }
 }

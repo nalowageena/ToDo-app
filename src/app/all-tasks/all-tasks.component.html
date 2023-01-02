@@ -27,20 +27,15 @@
         <input type="search" name="search" id="search" placeholder="search task">
        </div>
    <h2>All Tasks</h2>
-  <div class="task">
-    <p class="title">The first</p>
-    <small>priority:high</small>
-    <button routerLink = "/task">more</button>
-    <button>delete</button>
-  </div>
 
 <ul class="tasks">
   <li *ngFor="let task of tasks">
-    <button type="button" (click)="onSelect(task)">
-      <span class="badge">{{task.taskId}}</span>
-      <span class="name">{{task.title}}</span>
-      <span class="name">{{task.priority}}</span>
-    </button>
+    <div class="task">
+        <p class="title">{{task.title}}</p>
+        <small>{{task.priority}}</small>
+        <button routerLink = "/task" (click)="viewDetails(task)">more</button>
+        <button (click)="deleteTask(task)">delete</button>
+      </div>
   </li>
   <div *ngIf="selectedTask">
     <h2>{{selectedTask.title | uppercase}} Details</h2>
