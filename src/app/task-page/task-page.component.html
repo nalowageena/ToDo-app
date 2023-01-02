@@ -11,7 +11,16 @@
         </select>
         <!-- <label for="deadline">Deadline</label>
         <input type="datetime-local" name="deadline" id="deadline" formControlName="deadline"> -->
-
+        <div>
+            <input type="file" name="image" id="image" accept="image/*" (change)="onChange($event)" formControlName="image">
+        <img [src]="imageUrl" height="200">
+        </div>
+        <div>
+            <label for="link">Attach link</label>
+            <input type="url" name="link" id="link" formControlName="link">
+            <label for="shortLink">Show as</label>
+            <input type="text" id="shortLink" formControlName="shortLink">
+        </div>
         <button type="submit" [disabled]="taskForm.invalid">Save</button>
     </form>
 </main>
