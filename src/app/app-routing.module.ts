@@ -10,6 +10,7 @@ const routes: Routes = [
   {path:'new-task', component:TaskPageComponent},
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'task/:id', component: TaskDetailsComponent },
+  {path:'edit-task/:id', component:TaskPageComponent}
 ];
 
 @NgModule({

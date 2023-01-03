@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../task.service";
 import { Task } from "../task";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Component({
   selector: 'app-task-details',
@@ -21,9 +21,18 @@ export class TaskDetailsComponent implements OnInit {
       }
 
   getTask(): void {
-const id = Number(this.route.snapshot.paramMap.get('id'))-1;
-    this.taskService.getTask(id)
-      .subscribe(task => this.task = task);
+// const id = Number(this.route.snapshot.params['id']);
+    // this.taskService.getTask(id)
+    //   .subscribe(task => this.task = task);
+
+      this.route.params
+      .subscribe(params => {
+        const id = params['id'];
+        if (id) {
+          this.taskService.getTask(id).pipe(
+            take(1)).subscribe(task => this.task = task);
+        }
+      });
   }
 
 }

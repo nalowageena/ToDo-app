@@ -63,7 +63,7 @@ export class TaskService {
     }
 
     getTask(taskId:number):Observable<Task>{
-        const task = of(this.tasks[taskId])
+        const task = of(this.tasks.find(task => task.taskId == taskId));
         return task;
     }
 
@@ -74,8 +74,10 @@ export class TaskService {
         }
     }
 
-    updateTask(task: Task): void {
-
+    updateTask(taskId:number,task: Task): void {
+        task.taskId = taskId;
+        const id = this.tasks.findIndex(task => task.taskId == taskId)
+        this.tasks.splice(id,1,task);
     }
 
   

@@ -2,8 +2,8 @@
     <button routerLink="/homepage">Back</button>
 
     <form [formGroup]="taskForm" (ngSubmit)="onClickSave()">
-        <input type="text" name="title" id="title" value="The first" formControlName="title" required/>
-        <input type="text" id="description" value="the first ever task on this app" formControlName="description" />
+        <input type="text" name="title" id="title" formControlName="title" required/>
+        <input type="text" id="description" formControlName="description" />
         <select name="priority" id="priority" formControlName="priority">
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -17,7 +17,7 @@
         </div>
         <div>
             <label for="link">Attach link</label>
-            <input type="url" name="link" id="link" formControlName="link">
+            <input type="url" name="link" id="link" formControlName="link" >
             <label for="shortLink">Show as</label>
             <input type="text" id="shortLink" formControlName="shortLink">
         </div>
