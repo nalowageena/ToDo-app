@@ -4,20 +4,15 @@
  <aside class="bg-light p-5 w-8">
     <label for="completion">Completion</label>
       <fieldset id="completion">
-        <input type="radio" value="done" name="completion"> Done <br>
-        <input type="radio" value="undone" name="completion"> Undone <br>
-        <input type="radio" value="all" name="completion"> All <br>
+        <input type="radio" value="all" name="filter" (change)="handleChange($event)" [checked]="filter == 'all'"> All <br>
+        <input type="radio" value="done" name="filter" (change)="handleChange($event)" [checked]="filter == 'done'"> Done <br>
+        <input type="radio" value="to do" name="filter" (change)="handleChange($event)" [checked]="filter == 'to do'"> Undone <br>
       </fieldset>
     <label for="priority">Priority</label>
       <fieldset id="priority">
-        <input type="radio" value="low" name="priority"> Low <br>
-        <input type="radio" value="medium" name="priority"> Medium <br>
-        <input type="radio" value="high" name="priority"> High <br>
-      </fieldset>
-      <label for="date">Date</label>
-      <fieldset id="date">
-        <input type="radio" value="today" name="date"> Today <br>
-        <input type="radio" value="yesterday" name="date"> Yesterday <br>
+        <input type="radio" value="low" name="priority" (click)="handlePriority($event)" > Low <br>
+        <input type="radio" value="medium" name="priority" (click)="handlePriority($event)" > Medium <br>
+        <input type="radio" value="high" name="priority" (click)="handlePriority($event)" > High <br>
       </fieldset>
   </aside>
   
@@ -32,6 +27,7 @@
   <li *ngFor="let task of tasks">
     <div class="task">
         <p class="title">{{task.title}}</p>
+        <p>{{task.done}}</p>
         <small>{{task.priority}}</small>
         <small>{{task.taskId}}</small>
         <button routerLink = "/new-task"  routerLink="/task/{{task.taskId}}">more</button>

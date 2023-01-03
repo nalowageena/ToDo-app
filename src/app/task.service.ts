@@ -10,6 +10,7 @@ export class TaskService {
     tasks: Task[] = [
         {
             taskId: 1,
+            done: false,
             title: 'first',
             description: 'stuff',
             priority: 'high',
@@ -22,6 +23,7 @@ export class TaskService {
         },
         {
             taskId: 2,
+            done: false,
             title: 'second',
             description: 'stuffer',
             priority: 'medium',
@@ -34,6 +36,7 @@ export class TaskService {
         },
         {
             taskId: 3,
+            done: true,
             title: 'third',
             description: 'stuffest',
             priority: 'low',
@@ -48,9 +51,33 @@ export class TaskService {
 
     constructor() { }
 
-    getTasks(): Observable<Task[]> {
-        const tasks = of(this.tasks);
-        return tasks
+    getTasks(filter1: string, filter2: string): Observable<Task[]> {
+        let filteredTasks: Task[];
+
+        if (filter1 === 'all') {
+            filteredTasks = this.tasks;
+        }
+        else {
+            filteredTasks = this.tasks.filter((task) => filter1 === 'done' ? task.done : !task.done);
+        }
+
+        if (filter2 === 'high') {
+            filteredTasks = filteredTasks.filter((task) => {filter2 === 'high'
+        return task.priority== 'high'});
+        }
+
+        if (filter2 === 'medium') {
+            filteredTasks = filteredTasks.filter((task) => {filter2 === 'medium'
+            return task.priority== 'medium'
+        });
+        }
+
+        if (filter2 === 'low') {
+            filteredTasks = filteredTasks.filter((task) => {filter2 === 'low'
+            return task.priority== 'low'});
+        }
+        return of(filteredTasks);
+
     }
 
     addTask(task: Task): void {
@@ -58,11 +85,11 @@ export class TaskService {
         this.tasks.push(task)
     }
 
-    getTaskID(task:Task):number{
+    getTaskID(task: Task): number {
         return task.taskId;
     }
 
-    getTask(taskId:number):Observable<Task>{
+    getTask(taskId: number): Observable<Task> {
         const task = of(this.tasks.find(task => task.taskId == taskId));
         return task;
     }
@@ -74,11 +101,11 @@ export class TaskService {
         }
     }
 
-    updateTask(taskId:number,task: Task): void {
+    updateTask(taskId: number, task: Task): void {
         task.taskId = taskId;
         const id = this.tasks.findIndex(task => task.taskId == taskId)
-        this.tasks.splice(id,1,task);
+        this.tasks.splice(id, 1, task);
     }
 
-  
+
 }

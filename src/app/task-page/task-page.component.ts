@@ -59,6 +59,7 @@ export class TaskPageComponent implements OnInit {
     onClickSave() {
         let task: Task = {
             taskId: 1,
+            done: false,
             title: this.taskForm.getRawValue().title,
             description: this.taskForm.value.description,
             priority: this.taskForm.value.priority,

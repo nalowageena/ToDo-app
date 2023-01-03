@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class AllTasksComponent implements OnInit {
 
     tasks: Task[] = [] ;
+    filter: 'all' | 'to do' | 'done' = 'all';
+    priority: 'high' | 'medium' | 'low';
 
   constructor(private taskService:TaskService, private router:Router) { }
 
@@ -19,7 +21,7 @@ export class AllTasksComponent implements OnInit {
   }
 
   getTasks():void{
-    this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+    this.taskService.getTasks(this.filter, this.priority).subscribe(tasks => this.tasks = tasks);
   }
 
   selectedTask?: Task;
@@ -31,4 +33,21 @@ export class AllTasksComponent implements OnInit {
     this.taskService.deleteTask(task);
   }
 
+  handleChange(evt) {
+    var target = evt.target;
+    if (target.checked) {
+        this.filter=evt.target.value
+        this.getTasks();
+    } 
+  }
+
+  handlePriority(evt) {
+    var target = evt.target;
+    if (target.checked) {
+        this.priority=evt.target.value
+        this.getTasks();
+    } 
+    console.log("here");
+    
+  }
 }
