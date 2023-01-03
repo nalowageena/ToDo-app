@@ -7,12 +7,14 @@ import { TaskPageComponent } from './task-page/task-page.component';
 import { AllTasksComponent } from './all-tasks/all-tasks.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { TaskDetailsComponent } from './task-details/task-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskPageComponent,
-    AllTasksComponent
+    AllTasksComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ export class TaskService {
 
     tasks: Task[] = [
         {
+            taskId: 1,
             title: 'first',
             description: 'stuff',
             priority: 'high',
@@ -20,6 +21,7 @@ export class TaskService {
             imageUrl: ''
         },
         {
+            taskId: 2,
             title: 'second',
             description: 'stuffer',
             priority: 'medium',
@@ -31,13 +33,14 @@ export class TaskService {
             imageUrl: ''
         },
         {
+            taskId: 3,
             title: 'third',
             description: 'stuffest',
             priority: 'low',
             // deadline: Date,
             attachLink: {
-                link: '',
-                shortLink: ''
+                link: 'https://www.positronx.io/angular-show-image-preview-with-reactive-forms-tutorial/#:~:text=To%20show%20the%20image%20preview,the%20new%20FileReader()%20method.',
+                shortLink: 'positronx'
             },
             imageUrl: ''
         },
@@ -51,11 +54,21 @@ export class TaskService {
     }
 
     addTask(task: Task): void {
+        task.taskId = this.tasks.length + 1;
         this.tasks.push(task)
     }
 
+    getTaskID(task:Task):number{
+        return task.taskId;
+    }
+
+    getTask(taskId:number):Observable<Task>{
+        const task = of(this.tasks[taskId])
+        return task;
+    }
+
     deleteTask(task: Task): void {
-        const index = this.tasks.indexOf(task, 0);
+        const index = this.getTaskID(task)
         if (index > -1) {
             this.tasks.splice(index, 1);
         }
@@ -64,4 +77,6 @@ export class TaskService {
     updateTask(task: Task): void {
 
     }
+
+  
 }

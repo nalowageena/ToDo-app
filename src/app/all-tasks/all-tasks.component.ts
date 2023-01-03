@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../task.service";
 import { Task } from "../task";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-tasks',
@@ -11,7 +12,7 @@ export class AllTasksComponent implements OnInit {
 
     tasks: Task[] = [] ;
 
-  constructor(private taskService:TaskService) { }
+  constructor(private taskService:TaskService, private router:Router) { }
 
   ngOnInit(): void {
     this.getTasks();
@@ -26,11 +27,8 @@ export class AllTasksComponent implements OnInit {
     this.selectedTask = task;
   }
 
-  deleteTask(task):void{
+  deleteTask(task: Task):void{
     this.taskService.deleteTask(task);
   }
 
-  viewDetails(task):void{
-    this.taskService.deleteTask(task);
-  }
 }

@@ -1,0 +1,10 @@
+<div>
+    <h3>{{task.title}}</h3>
+    <button type="button"routerLink="/new-task"><i class="fa-solid fa-edit"></i> Edit Task</button>
+    <small>Priority: {{task.priority}}</small>
+    <small>Description</small>
+    <p>{{task.description}}</p>
+    <small>Attached link</small>
+    <a href="{{task.attachLink.link}}" target="_blank">{{task.attachLink.shortLink}}</a>
+    <img src="{{task.imageUrl}}" height="200">
+</div>

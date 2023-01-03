@@ -33,7 +33,8 @@
     <div class="task">
         <p class="title">{{task.title}}</p>
         <small>{{task.priority}}</small>
-        <button routerLink = "/task" (click)="viewDetails(task)">more</button>
+        <small>{{task.taskId}}</small>
+        <button routerLink = "/new-task"  routerLink="/task/{{task.taskId}}">more</button>
         <button (click)="deleteTask(task)">delete</button>
       </div>
   </li>
