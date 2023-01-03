@@ -1,44 +1,42 @@
 <div class="d-flex">
 
- <!-- sidebar -->
- <aside class="bg-light p-5 w-8">
-    <label for="completion">Completion</label>
-      <fieldset id="completion">
-        <input type="radio" value="all" name="filter" (change)="handleChange($event)" [checked]="filter == 'all'"> All <br>
-        <input type="radio" value="done" name="filter" (change)="handleChange($event)" [checked]="filter == 'done'"> Done <br>
-        <input type="radio" value="to do" name="filter" (change)="handleChange($event)" [checked]="filter == 'to do'"> Undone <br>
-      </fieldset>
-    <label for="priority">Priority</label>
-      <fieldset id="priority">
-        <input type="radio" value="low" name="priority" (click)="handlePriority($event)" > Low <br>
-        <input type="radio" value="medium" name="priority" (click)="handlePriority($event)" > Medium <br>
-        <input type="radio" value="high" name="priority" (click)="handlePriority($event)" > High <br>
-      </fieldset>
-  </aside>
-  
-  <main>
-    <div>
-        <button><i class="fa-solid fa-search"></i></button>
-        <input type="search" name="search" id="search" placeholder="search task">
-       </div>
-   <h2>All Tasks</h2>
+    <!-- sidebar -->
+    <aside class="bg-light p-5 w-8">
+        <label for="completion">Completion</label>
+        <fieldset id="completion">
+            <input type="radio" value="all" name="filter" (change)="handleChange($event)" [checked]="filter == 'all'">
+            All <br>
+            <input type="radio" value="done" name="filter" (change)="handleChange($event)" [checked]="filter == 'done'">
+            Done <br>
+            <input type="radio" value="to do" name="filter" (change)="handleChange($event)"
+                [checked]="filter == 'to do'"> Undone <br>
+        </fieldset>
+        <label for="priority">Priority</label>
+        <fieldset id="priority">
+            <input type="radio" value="low" name="priority" (click)="handlePriority($event)"> Low <br>
+            <input type="radio" value="medium" name="priority" (click)="handlePriority($event)"> Medium <br>
+            <input type="radio" value="high" name="priority" (click)="handlePriority($event)"> High <br>
+        </fieldset>
+    </aside>
 
-<ul class="tasks">
-  <li *ngFor="let task of tasks">
-    <div class="task">
-        <p class="title">{{task.title}}</p>
-        <p>{{task.done}}</p>
-        <small>{{task.priority}}</small>
-        <small>{{task.taskId}}</small>
-        <button routerLink = "/new-task"  routerLink="/task/{{task.taskId}}">more</button>
-        <button (click)="deleteTask(task)">delete</button>
-      </div>
-  </li>
-  <div *ngIf="selectedTask">
-    <h2>{{selectedTask.title | uppercase}} Details</h2>
-    <div>: {{selectedTask.priority}}</div>
-    <div>: {{selectedTask.description}}</div>
-  </div>
-</ul>
-  </main>
+    <main>
+        <div>
+            <button><i class="fa-solid fa-search"></i></button>
+            <input type="search" name="search" id="search" placeholder="search task">
+        </div>
+        <h2>All Tasks</h2>
+
+        <ul class="tasks">
+            <li *ngFor="let task of tasks">
+                <div class="task">
+                    <p class="title">{{task.title}}</p>
+                    <p>{{task.done}}</p>
+                    <small>{{task.priority}}</small>
+                    <small>{{task.taskId}}</small>
+                    <button routerLink="/new-task" routerLink="/task/{{task.taskId}}">more</button>
+                    <button (click)="deleteTask(task)">delete</button>
+                </div>
+            </li>
+        </ul>
+    </main>
 </div>

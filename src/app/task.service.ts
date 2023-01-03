@@ -62,19 +62,24 @@ export class TaskService {
         }
 
         if (filter2 === 'high') {
-            filteredTasks = filteredTasks.filter((task) => {filter2 === 'high'
-        return task.priority== 'high'});
+            filteredTasks = filteredTasks.filter((task) => {
+                filter2 === 'high'
+                return task.priority == 'high'
+            });
         }
 
         if (filter2 === 'medium') {
-            filteredTasks = filteredTasks.filter((task) => {filter2 === 'medium'
-            return task.priority== 'medium'
-        });
+            filteredTasks = filteredTasks.filter((task) => {
+                filter2 === 'medium'
+                return task.priority == 'medium'
+            });
         }
 
         if (filter2 === 'low') {
-            filteredTasks = filteredTasks.filter((task) => {filter2 === 'low'
-            return task.priority== 'low'});
+            filteredTasks = filteredTasks.filter((task) => {
+                filter2 === 'low'
+                return task.priority == 'low'
+            });
         }
         return of(filteredTasks);
 
@@ -85,19 +90,16 @@ export class TaskService {
         this.tasks.push(task)
     }
 
-    getTaskID(task: Task): number {
-        return task.taskId;
-    }
-
     getTask(taskId: number): Observable<Task> {
         const task = of(this.tasks.find(task => task.taskId == taskId));
         return task;
     }
 
     deleteTask(task: Task): void {
-        const index = this.getTaskID(task)
-        if (index > -1) {
-            this.tasks.splice(index, 1);
+        const id = this.tasks.indexOf(task);
+
+        if (id >= 0) {
+            this.tasks.splice(id, 1);
         }
     }
 
