@@ -17,7 +17,7 @@ export class TaskPageComponent implements OnInit {
         title: new FormControl('', Validators.required),
         description: new FormControl(''),
         priority: new FormControl(''),
-        // deadline:new FormControl(''),
+        deadline:new FormControl(''),
         image: new FormControl(''),
         link: new FormControl(''),
         shortLink: new FormControl('')
@@ -59,6 +59,8 @@ export class TaskPageComponent implements OnInit {
     onClickSave() {
         let task: Task = {
             taskId: 1,
+            createdAt: new Date().toDateString(),
+            deadline: this.taskForm.value.deadline,
             done: false,
             title: this.taskForm.getRawValue().title,
             description: this.taskForm.value.description,

@@ -7,47 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class TaskService {
 
-    tasks: Task[] = [
-        {
-            taskId: 1,
-            done: false,
-            title: 'first',
-            description: 'stuff',
-            priority: 'high',
-            // deadline: Date,
-            attachLink: {
-                link: '',
-                shortLink: ''
-            },
-            imageUrl: ''
-        },
-        {
-            taskId: 2,
-            done: false,
-            title: 'second',
-            description: 'stuffer',
-            priority: 'medium',
-            // deadline: Date,
-            attachLink: {
-                link: '',
-                shortLink: ''
-            },
-            imageUrl: ''
-        },
-        {
-            taskId: 3,
-            done: true,
-            title: 'third',
-            description: 'stuffest',
-            priority: 'low',
-            // deadline: Date,
-            attachLink: {
-                link: 'https://www.positronx.io/angular-show-image-preview-with-reactive-forms-tutorial/#:~:text=To%20show%20the%20image%20preview,the%20new%20FileReader()%20method.',
-                shortLink: 'positronx'
-            },
-            imageUrl: ''
-        },
-    ];
+    tasks: Task[] = [];
 
     constructor() { }
 

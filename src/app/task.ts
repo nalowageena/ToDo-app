@@ -1,6 +1,8 @@
 export interface Task {
     taskId:number,
     done:boolean,
+    createdAt: string,
+    deadline: string,
     title: string | null;
     description: string | null | undefined;
     priority: string | null | undefined;

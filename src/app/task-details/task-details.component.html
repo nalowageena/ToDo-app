@@ -1,7 +1,8 @@
 <div>
     <button routerLink="/homepage">Back</button>
-    
+
     <h3>{{task.title}}</h3>
+    <p>{{task.createdAt | date}}</p>
     <p>{{task.done}}</p>
     <button type="button"routerLink="/edit-task/{{task.taskId}}"><i class="fa-solid fa-edit"></i> Edit Task</button>
     <small>Priority: {{task.priority}}</small>
@@ -10,4 +11,6 @@
     <small>Attached link</small>
     <a href="{{task.attachLink.link}}" target="_blank">{{task.attachLink.shortLink}}</a>
     <img src="{{task.imageUrl}}" height="200">
+    <small>Deadline</small>
+    <p>{{task.deadline | date}}</p>
 </div>
