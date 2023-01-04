@@ -4,3 +4,13 @@
     position: relative;
     background-size: cover;
     }
+
+header small{
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+}
+
+.btn{
+    background-color: #d387ab;
+}
+
