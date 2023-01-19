@@ -7,7 +7,68 @@ import { Observable, of } from 'rxjs';
 })
 export class TaskService {
 
-    tasks: Task[] = [];
+    tasks: Task[] = [
+        {
+            taskId: 1,
+            done: false,
+            createdAt: '',
+            deadline: '01/12/2023',
+            title: 'first',
+            description: '',
+            priority: 'low',
+            // deadline: Date;
+            attachLink: {
+                link: 'string',
+                shortLink: 'string'
+            },
+            imageUrl: null
+        },
+        {
+            taskId: 2,
+            done: false,
+            createdAt: '',
+            deadline: '01/12/2023',
+            title: 'second',
+            description: '',
+            priority: 'medium',
+            // deadline: Date;
+            attachLink: {
+                link: 'string',
+                shortLink: 'string'
+            },
+            imageUrl: null
+        },
+        {
+            taskId: 3,
+            done: true,
+            createdAt: '',
+            deadline: '01/12/2023',
+            title: 'third',
+            description: '',
+            priority: 'high',
+            // deadline: Date;
+            attachLink: {
+                link: 'string',
+                shortLink: 'string'
+            },
+            imageUrl: null
+        },
+        {
+            taskId: 4,
+            done: true,
+            createdAt: '',
+            deadline: '01/12/2023',
+            title: 'fourth',
+            description: '',
+            priority: 'low',
+            // deadline: Date;
+            attachLink: {
+                link: 'string',
+                shortLink: 'string'
+            },
+            imageUrl: null
+        }
+    ];
 
     constructor() { }
 

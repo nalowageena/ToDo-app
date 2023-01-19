@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TaskService } from "../task.service";
 import { Task } from "../task";
 import { Router } from '@angular/router';
@@ -13,6 +13,8 @@ export class AllTasksComponent implements OnInit {
     tasks: Task[] = [];
     filter: 'all' | 'to do' | 'done' = 'all';
     priority: 'high' | 'medium' | 'low';
+
+    showSideBar: boolean = false;
 
     constructor(private taskService: TaskService, private router: Router) { }
 
@@ -44,5 +46,9 @@ export class AllTasksComponent implements OnInit {
         }
         console.log("here");
 
+    }
+  
+    displaySideBar():void{
+      this.showSideBar=!this.showSideBar;
     }
 }

@@ -6,8 +6,9 @@
     }
 
 header small{
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
+    /* font-family: 'Fraunces', serif;
+    font-weight: 400; */
+    font-family: 'Audiowide', cursive;
 }
 
 .btn{
