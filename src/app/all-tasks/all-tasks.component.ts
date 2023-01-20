@@ -51,4 +51,9 @@ export class AllTasksComponent implements OnInit {
     displaySideBar():void{
       this.showSideBar=!this.showSideBar;
     }
+
+    changeStatus(task) {
+        task.done = !task.done;
+        this.taskService.updateTask(task.taskId, task)
+    }
 }

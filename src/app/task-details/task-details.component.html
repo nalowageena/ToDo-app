@@ -15,7 +15,7 @@
             <button type="button" routerLink="/edit-task/{{task.taskId}}"><i class="fa-solid fa-edit"></i></button>
         </div>
         <div class="flex gap-10 items-start mb-4">
-            <p class="text-xs">status: <span class="text-sm">{{task.done}}</span></p>
+            <p class="text-xs">status: <span class="text-sm" *ngIf="task.done == true">done</span><span class="text-sm" *ngIf="task.done == false">undone</span></p>
 
             <p *ngIf="task.priority" class="text-xs">Priority: <span class="text-sm">{{task.priority}}</span></p>
             <p class="text-xs ">Deadline: <span class="text-red-500 text-sm">{{task.deadline | date}}</span></p>
