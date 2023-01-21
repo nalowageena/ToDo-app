@@ -5,4 +5,4 @@ Link to demo video :
 - (mp4)  https://drive.google.com/file/d/1snR7rTBAYk5WLsk4lN13Wg_U2A3jQVoU/view?usp=sharing
 
 Live site at:
-https://nalowa-todo-app.netlify.app/homepage
+https://nalowa-todo-app.netlify.app
