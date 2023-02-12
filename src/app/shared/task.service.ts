@@ -17,7 +17,7 @@ export class TaskService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  Addtask(task: Task) {
+  AddTask(task: Task) {
     this.tasksRef.push({
       done: task.done,
       createdAt: task.createdAt,
@@ -30,17 +30,17 @@ export class TaskService {
     });
   }
   // Fetch Single task Object
-  Gettask(id: string) {
+  GetTask(id: string) {
     this.taskRef = this.db.object('tasks-list/' + id);
     return this.taskRef;
   }
   // Fetch tasks List
-  GettasksList() {
+  GetTasksList() {
     this.tasksRef = this.db.list('tasks-list');
     return this.tasksRef;
   }
   // Update task Object
-  Updatetask(task: Task) {
+  UpdateTask(task: Task) {
     this.taskRef.update({
         done: task.done,
         createdAt: task.createdAt,
@@ -53,7 +53,7 @@ export class TaskService {
     });
   }
   // Delete task Object
-  Deletetask(id: string) {
+  DeleteTask(id: string) {
     this.taskRef = this.db.object('tasks-list/' + id);
     this.taskRef.remove();
   }

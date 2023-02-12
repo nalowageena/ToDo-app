@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TaskService } from "../task.service";
-import { Task } from "../task";
+import { TaskService } from "../shared/task.service";
+import { Task } from "../shared/task";
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,34 +19,34 @@ export class AllTasksComponent implements OnInit {
     constructor(private taskService: TaskService, private router: Router) { }
 
     ngOnInit(): void {
-        this.getTasks();
+        this.taskService.GetTasksList();
     }
 
-    getTasks(): void {
-        this.taskService.getTasks(this.filter, this.priority).subscribe(tasks => this.tasks = tasks);
-    }
+    // getTasks(): void {
+    //     this.taskService.getTasks(this.filter, this.priority).subscribe(tasks => this.tasks = tasks);
+    // }
 
     deleteTask(task: Task): void {
-        this.taskService.deleteTask(task);
+        this.taskService.DeleteTask(task.$key);
     }
 
-    handleChange(evt) {
-        var target = evt.target;
-        if (target.checked) {
-            this.filter = evt.target.value
-            this.getTasks();
-        }
-    }
+    // handleChange(evt) {
+    //     var target = evt.target;
+    //     if (target.checked) {
+    //         this.filter = evt.target.value
+    //         this.getTasks();
+    //     }
+    // }
 
-    handlePriority(evt) {
-        var target = evt.target;
-        if (target.checked) {
-            this.priority = evt.target.value
-            this.getTasks();
-        }
-        console.log("here");
+    // handlePriority(evt) {
+    //     var target = evt.target;
+    //     if (target.checked) {
+    //         this.priority = evt.target.value
+    //         this.getTasks();
+    //     }
+    //     console.log("here");
 
-    }
+    // }
   
     displaySideBar():void{
       this.showSideBar=!this.showSideBar;
@@ -54,6 +54,6 @@ export class AllTasksComponent implements OnInit {
 
     changeStatus(task) {
         task.done = !task.done;
-        this.taskService.updateTask(task.taskId, task)
+        this.taskService.UpdateTask(task)
     }
 }
