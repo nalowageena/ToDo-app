@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Task } from "../task";
-import { TaskService } from "../task.service";
+import { Task } from "../shared/task";
+import { TaskService } from "../shared/task.service";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Observable } from 'rxjs';
 import { first, take } from 'rxjs/operators';
@@ -33,14 +33,14 @@ export class TaskPageComponent implements OnInit {
     constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit(): void {
-        this.id = this.route.snapshot.params['id'];
-        this.isAddMode = !this.id;
+        // this.id = this.route.snapshot.params['id'];
+        // this.isAddMode = !this.id;
 
-        if (!this.isAddMode) {
-            this.taskService.getTask(this.id)
-                .pipe(first())
-                .subscribe(x => this.taskForm.patchValue(x));
-        }
+        // if (!this.isAddMode) {
+        //     this.taskService.GetTask(this.id)
+        //         .pipe(first())
+        //         .subscribe(x => this.taskForm.patchValue(x));
+        // }
      }
 
     // On file Select
@@ -57,8 +57,7 @@ export class TaskPageComponent implements OnInit {
     }
 
     onClickSave() {
-        let task: Task = {
-            taskId: 1,
+        let task= {
             createdAt: new Date().toDateString(),
             deadline: this.taskForm.value.deadline,
             done: false,
@@ -84,7 +83,7 @@ export class TaskPageComponent implements OnInit {
     }
 
     createTask(task: Task) {
-        this.taskService.addTask(task);
+        this.taskService.AddTask(task);
     }
 
     updateTask(task: Task) {
@@ -92,13 +91,13 @@ export class TaskPageComponent implements OnInit {
       .subscribe(params => {
         const id = params['id'];
         if (id) {
-          this.taskService.updateTask(id, task)
+          this.taskService.UpdateTask(task)
         }
       });
     }
 
     getTask(): void {
-            this.taskService.getTask(this.id)
+            this.taskService.GetTask(this.id)
               .subscribe(task => this.task = task);
           }
 }
